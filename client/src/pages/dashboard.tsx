@@ -110,8 +110,8 @@ export default function Dashboard() {
       <section className="space-y-6 pb-8">
         <div className="flex justify-between items-center">
           <h2 className="text-xl font-semibold">Recent Photos</h2>
-          <Link href="/photos">
-            <a className="text-primary hover:text-blue-700 text-sm font-medium">View All</a>
+          <Link href="/photos" className="text-primary hover:text-blue-700 text-sm font-medium">
+            View All
           </Link>
         </div>
         
@@ -128,8 +128,8 @@ export default function Dashboard() {
       <section className="space-y-6 pb-8">
         <div className="flex justify-between items-center">
           <h2 className="text-xl font-semibold">My Organizations</h2>
-          <Link href="/organizations">
-            <a className="text-primary hover:text-blue-700 text-sm font-medium">View All</a>
+          <Link href="/organizations" className="text-primary hover:text-blue-700 text-sm font-medium">
+            View All
           </Link>
         </div>
         
@@ -154,7 +154,7 @@ export default function Dashboard() {
                     <p className="text-sm text-gray-500 mb-4">Start a new photography community</p>
                     <Button asChild>
                       <Link href="/organizations/new">
-                        <a>Create Now</a>
+                        Create Now
                       </Link>
                     </Button>
                   </div>
@@ -169,7 +169,7 @@ export default function Dashboard() {
                 <p className="text-sm text-gray-500 mb-4">Create an organization to connect with other photographers</p>
                 <Button asChild>
                   <Link href="/organizations/new">
-                    <a>Create Organization</a>
+                    Create Organization
                   </Link>
                 </Button>
               </div>
@@ -182,8 +182,8 @@ export default function Dashboard() {
       <section className="space-y-6 pb-8">
         <div className="flex justify-between items-center">
           <h2 className="text-xl font-semibold">My Galleries</h2>
-          <Link href="/galleries">
-            <a className="text-primary hover:text-blue-700 text-sm font-medium">Manage Galleries</a>
+          <Link href="/galleries" className="text-primary hover:text-blue-700 text-sm font-medium">
+            Manage Galleries
           </Link>
         </div>
         
@@ -208,7 +208,7 @@ export default function Dashboard() {
                     <p className="text-sm text-gray-500 mb-4">Organize your photos into a new collection</p>
                     <Button className="bg-secondary hover:bg-green-700" asChild>
                       <Link href="/galleries/new">
-                        <a>Create Gallery</a>
+                        Create Gallery
                       </Link>
                     </Button>
                   </div>
@@ -223,7 +223,7 @@ export default function Dashboard() {
                 <p className="text-sm text-gray-500 mb-4">Create a gallery to organize your photos</p>
                 <Button className="bg-secondary hover:bg-green-700" asChild>
                   <Link href="/galleries/new">
-                    <a>Create Gallery</a>
+                    Create Gallery
                   </Link>
                 </Button>
               </div>
