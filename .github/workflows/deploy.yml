@@ -1,0 +1,65 @@
+name: Deploy to AWS
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Build application
+      run: npm run build
+      
+    - name: Create deployment package
+      run: |
+        mkdir -p dist
+        cp -r package.json package-lock.json dist/
+        cp -r server dist/
+        cp -r shared dist/
+        cp -r .ebextensions dist/
+        
+        cd dist
+        zip -r ../deploy.zip .
+        cd ..
+      
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION }}
+        
+    - name: Upload to S3
+      run: |
+        aws s3 cp deploy.zip s3://photosphere-deployment/
+        
+    - name: Deploy to Elastic Beanstalk
+      run: |
+        aws elasticbeanstalk create-application-version \
+          --application-name photosphere-app \
+          --version-label "v-${{ github.sha }}" \
+          --source-bundle S3Bucket="photosphere-deployment",S3Key="deploy.zip"
+          
+        aws elasticbeanstalk update-environment \
+          --application-name photosphere-app \
+          --environment-name photosphere-env \
+          --version-label "v-${{ github.sha }}"
+          
+    - name: Deployment status
+      run: |
+        echo "Deployment initiated to AWS Elastic Beanstalk"
+        echo "Check the AWS Console for deployment status and details"
