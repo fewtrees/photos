@@ -131,19 +131,19 @@ export function PhotoCard({ photo, isCompetition, competitionId, onDelete }: Pho
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <Link href={`/photos/${photo.id}`}>
-                  <DropdownMenuItem className="cursor-pointer">
+                <DropdownMenuItem className="cursor-pointer" asChild>
+                  <Link href={`/photos/${photo.id}`}>
                     View Details
-                  </DropdownMenuItem>
-                </Link>
+                  </Link>
+                </DropdownMenuItem>
                 
                 {isOwner && (
                   <>
-                    <Link href={`/photos/${photo.id}/edit`}>
-                      <DropdownMenuItem className="cursor-pointer">
+                    <DropdownMenuItem className="cursor-pointer" asChild>
+                      <Link href={`/photos/${photo.id}/edit`}>
                         Edit Photo
-                      </DropdownMenuItem>
-                    </Link>
+                      </Link>
+                    </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem className="cursor-pointer text-red-600">
                       Delete Photo
