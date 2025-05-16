@@ -17,14 +17,12 @@ const NavLink = ({ href, children, currentPath }: { href: string; children: Reac
   const isActive = currentPath === href;
   
   return (
-    <Link href={href}>
-      <a className={`${
-        isActive 
-          ? "border-primary text-gray-900" 
-          : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700"
-        } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
-        {children}
-      </a>
+    <Link href={href} className={`${
+      isActive 
+        ? "border-primary text-gray-900" 
+        : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700"
+      } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}>
+      {children}
     </Link>
   );
 };
@@ -44,8 +42,8 @@ export function Navbar() {
         <div className="flex justify-between h-16">
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
-              <Link href="/">
-                <a className="text-primary font-bold text-xl">Photosphere</a>
+              <Link href="/" className="text-primary font-bold text-xl">
+                Photosphere
               </Link>
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
@@ -73,14 +71,14 @@ export function Navbar() {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
-                    <DropdownMenuItem asChild>
-                      <Link href="/profile">
-                        <a className="cursor-pointer w-full">Your Profile</a>
+                    <DropdownMenuItem>
+                      <Link href="/profile" className="cursor-pointer w-full">
+                        Your Profile
                       </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <Link href="/settings">
-                        <a className="cursor-pointer w-full">Settings</a>
+                    <DropdownMenuItem>
+                      <Link href="/settings" className="cursor-pointer w-full">
+                        Settings
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
@@ -106,39 +104,51 @@ export function Navbar() {
               </SheetTrigger>
               <SheetContent side="left">
                 <div className="flex flex-col space-y-4 py-4">
-                  <Link href="/">
-                    <a onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
-                      Dashboard
-                    </a>
+                  <Link 
+                    href="/" 
+                    onClick={() => setMobileMenuOpen(false)} 
+                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                  >
+                    Dashboard
                   </Link>
-                  <Link href="/galleries">
-                    <a onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
-                      Galleries
-                    </a>
+                  <Link 
+                    href="/galleries" 
+                    onClick={() => setMobileMenuOpen(false)} 
+                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                  >
+                    Galleries
                   </Link>
-                  <Link href="/organizations">
-                    <a onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
-                      Organizations
-                    </a>
+                  <Link 
+                    href="/organizations" 
+                    onClick={() => setMobileMenuOpen(false)} 
+                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                  >
+                    Organizations
                   </Link>
-                  <Link href="/competitions">
-                    <a onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
-                      Competitions
-                    </a>
+                  <Link 
+                    href="/competitions" 
+                    onClick={() => setMobileMenuOpen(false)} 
+                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                  >
+                    Competitions
                   </Link>
                   
                   {isAuthenticated ? (
                     <>
                       <div className="border-t border-gray-200 pt-4">
-                        <Link href="/profile">
-                          <a onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
-                            Your Profile
-                          </a>
+                        <Link 
+                          href="/profile" 
+                          onClick={() => setMobileMenuOpen(false)} 
+                          className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                        >
+                          Your Profile
                         </Link>
-                        <Link href="/settings">
-                          <a onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
-                            Settings
-                          </a>
+                        <Link 
+                          href="/settings" 
+                          onClick={() => setMobileMenuOpen(false)} 
+                          className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                        >
+                          Settings
                         </Link>
                         <a 
                           href="/api/logout" 
